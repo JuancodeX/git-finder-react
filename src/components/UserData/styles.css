@@ -1,0 +1,21 @@
+.container-user-data {
+  margin-left: 1.5%;
+  padding: 15px 0;
+}
+
+.container-user-data h1 {
+  text-align: center;
+  color: #61DBFB;
+  padding-bottom: 15px;
+}
+
+img {
+  width: 260px;
+  height: 260px;
+  border-radius: 5px;
+}
+
+.data ul li:nth-child(3)
+{
+  border-bottom: 0;
+}

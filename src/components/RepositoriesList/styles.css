@@ -1,0 +1,46 @@
+.container-repos {
+  width: 100%;
+  padding: 15px
+}
+
+.container-repos > h1 {
+  color: #61DBFB;
+  text-align: center;
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  background: #61DBFB;
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
+.basic-data > p {
+  color: #c4c4c4;
+  font-size: 12px;
+  padding-top: 5px;
+  line-height: 25px;
+}
+
+.basic-data,
+.basic-data p {
+  display: flex;
+}
+
+.repos-list ul{
+  width: 100%;
+}
+
+.repos-list li {
+  width: 50%;
+  border: 0;
+  min-width: 350px;
+}
+
+p {
+  color: #c4c4c4;
+  font-size: 12px;
+  padding-top: 5px;
+}
