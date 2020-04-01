@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { render } from 'react-dom';
-
 import Header from './components/Header';
 
 import UserData from './components/UserData';
@@ -20,28 +18,41 @@ function App() {
   }; 
 
   const [user, setUser] = useState({
-    data: 0
+    data: ""
   });
 
+  const [repos, setRepos] = useState([
+  ]);
+
+  function getRepos(e) {
+    if(e.target.value.length > 0)
+    {
+      axios.get(`${github.url}/${e.target.value}/repos?client_id=${github.clientId}&client_secret=${github.clientSecret}`)
+      .then(res => setRepos(res.data));
+    } 
+  }  
+
   function getUser(e) {
-    axios.get(`${github.url}/${e.target.value}?client_id=${github.clientId}&client_secret=${github.clientSecret}`)
-    .then(({data}) => setUser({ data }));
-
-    const element = (
-    <>
-      <UserData user={user}/>
-      <RepositoriesList/>
-    </>
-    )
-
-    render(element, document.querySelector(".main-container"));
-  }
+  
+    if(e.target.value.length > 0)
+    {
+      axios.get(`${github.url}/${e.target.value}?client_id=${github.clientId}&client_secret=${github.clientSecret}`)
+      .then(({data}) => setUser({ data }));      
+    }
+  }  
 
   return (
     <div className="App">
       <Header/>
-      <input type="text" className="input" onKeyUp={getUser}/>
+      <input 
+      type="text" 
+      className="input" 
+      onChange={function(e) 
+      {getUser(e);
+      getRepos(e);}}/>
       <div className="main-container">
+        <UserData user={user}/>
+        <RepositoriesList repositories={repos}/>
       </div>
     </div>
 

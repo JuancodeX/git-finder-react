@@ -5,7 +5,9 @@ function UserData({user}) {
   return (
     <div className="container-user-data">
       <h1>{user.data.login}</h1>
-      <img src={user.data.avatar_url}/>
+      <div className="image">
+        <img src={user.data.avatar_url} alt=""/>
+      </div>
 
       <div className="data">
         <ul>
