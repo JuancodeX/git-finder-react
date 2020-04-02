@@ -7,8 +7,8 @@ import { FaStar } from 'react-icons/fa';
 function RepositoriesList({ repositories }) {
 
   const list = repositories.map(repo => (
-    <ul>
-      <li key={repo.id}>
+    <ul key={repo.id}>
+      <li>
         <h2>{repo.name}</h2>
         <p>{repo.description}</p>
         

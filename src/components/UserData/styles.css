@@ -21,7 +21,22 @@ img {
   border-radius: 5px;
 }
 
-.data ul li:nth-child(3)
+.data ul li:nth-child(4)
 {
   border-bottom: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #FFF;
+  background: #61DBFB;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #61DBFB;
+  transition: 0.25s;
+}
+
+a:hover {
+  color: #61DBFB;
+  background: #FFF;
 }

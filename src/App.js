@@ -13,8 +13,8 @@ import './global.css';
 function App() {
   const github = {
     url: "https://api.github.com/users",
-    clientId: "ca745f5529ad8e0b1a38",
-    clientSecret: "13c2f516afe495a7f74f5287ed771270b6304eda"
+    clientId: "fd81480048f89c483520",
+    clientSecret: ""
   }; 
 
   const [user, setUser] = useState({

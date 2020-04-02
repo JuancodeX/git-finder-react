@@ -14,6 +14,7 @@ function UserData({user}) {
           <li>Seguidores: {user.data.followers}</li>
           <li>Seguindo: {user.data.following}</li>
           <li>Repositórios: {user.data.public_repos}</li>
+          <li><a href={user.data.html_url} target="blank">Ver Perfil</a></li>
         </ul>
       </div>
 
