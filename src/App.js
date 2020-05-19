@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 
-import Header from './components/Header';
+import ReactDOM from 'react-dom';
 
 import UserData from './components/UserData';
 
@@ -8,56 +8,61 @@ import RepositoriesList from './components/RepositoriesList';
 
 import axios from 'axios';
 
-import './global.css';
+import './App.css';
 
-function App() {
-  const github = {
-    url: "https://api.github.com/users",
-    clientId: "fd81480048f89c483520",
-    clientSecret: ""
-  }; 
+class App extends Component {
+  constructor() {
+    super()
 
-  const [user, setUser] = useState({
-    data: ""
-  });
-
-  const [repos, setRepos] = useState([
-  ]);
-
-  function getRepos(e) {
-    if(e.target.value.length > 0)
-    {
-      axios.get(`${github.url}/${e.target.value}/repos?client_id=${github.clientId}&client_secret=${github.clientSecret}`)
-      .then(res => setRepos(res.data));
-    } 
-  }  
-
-  function getUser(e) {
-  
-    if(e.target.value.length > 0)
-    {
-      axios.get(`${github.url}/${e.target.value}?client_id=${github.clientId}&client_secret=${github.clientSecret}`)
-      .then(({data}) => setUser({ data }));      
+    this.state = {
+      github: {
+        url: "https://api.github.com/users",
+        clientId: "fd81480048f89c483520",
+        clientSecret: "c5eec4cfb1bd49074383709b1362ae8289715168"
+      },
+      user: {},
+      repos: []
     }
-  }  
+  }
 
-  return (
-    <div className="App">
-      <Header/>
-      <input 
-      type="text" 
-      className="input" 
-      onChange={function(e) 
-      {getUser(e);
-      getRepos(e);}}/>
-      <div className="main-container">
-        <UserData user={user}/>
-        <RepositoriesList repositories={repos}/>
+  getUser = async e => {
+    await axios.get(`${this.state.github.url}/${e.target.value}?client_id=${this.state.github.clientId}&client_secret=${this.state.github.clientSecret}`)
+      .then(res => this.setState({ user: res.data }));
+  }
+
+  getRepos = async e => {
+    await axios.get(`${this.state.github.url}/${e.target.value}/repos?client_id=${this.state.github.clientId}&client_secret=${this.state.github.clientSecret}`)
+      .then(res => this.setState({repos: res.data}));
+
+    const element = document.querySelector(".data");
+
+    ReactDOM.render(
+    <>
+      <UserData user={this.state.user} />
+      <RepositoriesList repos={this.state.repos} />
+    </>, element);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className="container">
+          <input
+            className="input"
+            type="text"
+            onKeyUp={e => {
+              this.getRepos(e);
+              this.getUser(e);
+            }}
+
+            placeholder="Escreva aqui o usuário que está procurando."
+          />
+
+          <div className="data"></div>
+        </div>
       </div>
-    </div>
-
-  );
-
+    );
+  }
 }
 
 export default App;

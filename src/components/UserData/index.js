@@ -1,25 +1,23 @@
 import React from 'react';
+
 import './styles.css';
 
-function UserData({user}) {
+function UserData({ user }) {
   return (
-    <div className="container-user-data">
-      <h1>{user.data.login}</h1>
-      <div className="image">
-        <img src={user.data.avatar_url} alt=""/>
-      </div>
+    <>
+      <div className="user-data">
+        <h1>{user.login}</h1>
 
-      <div className="data">
+        <img src={user.avatar_url} alt="user" />
+
         <ul>
-          <li>Seguidores: {user.data.followers}</li>
-          <li>Seguindo: {user.data.following}</li>
-          <li>Repositórios: {user.data.public_repos}</li>
-          <li><a href={user.data.html_url} target="blank">Ver Perfil</a></li>
+          <li>Seguidores: <strong>{user.followers}</strong></li>
+          <li>Seguindo: <strong>{user.following}</strong></li>
+          <li>Repositórios: <strong>{user.public_repos}</strong></li>
+          <li><a href={user.html_url} target="_blank">Ver Perfil</a></li>
         </ul>
       </div>
-
-    </div>
-
+    </>
   );
 }
 

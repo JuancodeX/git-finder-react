@@ -1,32 +1,27 @@
 import React from 'react';
 
-import './styles.css';
-
 import { FaStar } from 'react-icons/fa';
 
-function RepositoriesList({ repositories }) {
+import './styles.css';
 
-  const list = repositories.map(repo => (
-    <ul key={repo.id}>
-      <li>
-        <h2>{repo.name}</h2>
-        <p>{repo.description}</p>
-        
-        <div className="basic-data">
-          <div className="circle"></div>
-          <p>{repo.language ? repo.language : "Indefinido"}</p>
-          <p><FaStar size="18px" style={{marginTop: "2px", marginLeft: "5px", marginRight: "5px"}}/>{repo.stargazers_count}</p>
-        </div>
-      </li>
-    </ul>
-  ))
-
+function RepositoriesList({ repos }) {
   return (
-    <div className="container-repos">
-      <h1>REPOSITÓRIOS</h1>
-      <div className="repos-list">
-        {list}
-      </div>
+    <div className="repos">
+      <h1>Repositórios</h1>
+
+      <ul>
+        {repos.map(repo => (
+          <li key={repo.id}>
+            <strong>{repo.name}</strong>
+            <p>{repo.description}</p>
+
+            <div>
+              <p><span></span>{repo.language === null ? "Não definido" : repo.language}</p>
+              <p><FaStar size={14} color={"#00bbf9"} style={{ marginRight: "5px" }} />{repo.stargazers_count}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
