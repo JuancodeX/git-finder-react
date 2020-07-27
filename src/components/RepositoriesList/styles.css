@@ -1,3 +1,7 @@
+.repos {
+  grid-area: repositories-list;
+}
+
 .repos ul li {
   list-style-type: none;
   width: 100%;

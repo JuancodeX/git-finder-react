@@ -2,6 +2,7 @@ img {
   width: 260px;
   height: 260px;
   border-radius: 4px;
+  padding: 5px;
 }
 
 h1 {
@@ -10,7 +11,7 @@ h1 {
 }
 
 .user-data {
-  grid-area: "image-name";
+  grid-area: user-data;
 }
 
 .user-data ul li {

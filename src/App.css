@@ -46,4 +46,21 @@ input {
 .data {
   display: grid;
   grid-template-columns: 260px 1fr;
+
+  grid-template-areas: "user-data repositories-list";
+}
+
+@media (max-width: 705px) {
+  .data, .user-data {
+    display: flex;
+    flex-direction: column;
+  }
+
+  img {
+    align-self: center;
+  }
+
+  .user-data ul li {
+    text-align: center;
+  }
 }
